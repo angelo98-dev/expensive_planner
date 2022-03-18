@@ -10,19 +10,21 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Expensive Planner'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: double.infinity,
-            child: const Card(
-              child: Text('CHART'),
-              color: Colors.blueAccent,
-              elevation: 5,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: double.infinity,
+              child: const Card(
+                child: Text('CHART'),
+                color: Colors.blueAccent,
+                elevation: 5,
+              ),
             ),
-          ),
-          UserTransaction()
-        ],
+            UserTransaction()
+          ],
+        ),
       ),
     );
   }
