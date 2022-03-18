@@ -13,17 +13,18 @@ class TransactionList extends StatelessWidget {
     return Container(
       height: 300,
       child: ListView.builder(
-        itemBuilder: (context, index) {
+        itemBuilder: (_, index) {
           return Card(
             child: Row(
               children: [
                 Container(
                   child: Text(
-                    '${userTransaction[index].amount.toString()} €',
-                    style: const TextStyle(
+                    '${userTransaction[index].amount.toStringAsFixed(2)} €',
+                    style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.purple),
+                      color: Theme.of(context).colorScheme.primary
+                       ),
                   ),
                   margin: const EdgeInsets.symmetric(
                     vertical: 10,
@@ -31,7 +32,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.purple,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   padding: EdgeInsets.all(10),
