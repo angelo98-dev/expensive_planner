@@ -1,25 +1,27 @@
+import 'package:expensive_planner/new_transaction.dart';
+import 'package:expensive_planner/transaction_list.dart';
+import 'package:expensive_planner/user_transaction.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget{
-  const MyHomePage({Key? key}) : super(key: key);
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expensive Planner'),
       ),
-
       body: Column(
-        children: const [
-          Card(
-            child: Text('CHART'),
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            width: double.infinity,
+            child: const Card(
+              child: Text('CHART'),
+              color: Colors.blueAccent,
+              elevation: 5,
+            ),
           ),
-
-          Card(
-            child: Text('LIST OF TX'),
-          )
+          UserTransaction()
         ],
       ),
     );
