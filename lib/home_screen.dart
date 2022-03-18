@@ -1,6 +1,6 @@
-import 'package:expensive_planner/new_transaction.dart';
-import 'package:expensive_planner/transaction_list.dart';
-import 'package:expensive_planner/user_transaction.dart';
+import 'package:expensive_planner/widgets/new_transaction.dart';
+import 'package:expensive_planner/widgets/transaction_list.dart';
+import 'package:expensive_planner/widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:expensive_planner/new_transaction.dart';
-import 'package:expensive_planner/transaction_list.dart';
+import 'package:expensive_planner/widgets/new_transaction.dart';
+import 'package:expensive_planner/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
 
-import 'transaction_model.dart';
+import '../model/transaction_model.dart';
 
 class UserTransaction extends StatefulWidget {
   const UserTransaction({Key? key}) : super(key: key);
