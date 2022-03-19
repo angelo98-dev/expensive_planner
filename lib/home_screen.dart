@@ -5,14 +5,11 @@ import 'package:flutter/material.dart';
 import 'model/transaction_model.dart';
 
 class MyHomePage extends StatefulWidget {
-
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final List<Transaction> _userTransaction = [];
 
   void _addNewTransaction(String title, double amount) {
@@ -26,12 +23,12 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _userTransaction.add(newTx);
     });
-
   }
-  void startAddNewTransaction(BuildContext context){
+
+  void startAddNewTransaction(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        builder: (_){
+        builder: (_) {
           return NewTransaction(_addNewTransaction);
         });
   }
@@ -43,9 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Personal Expenses'),
         actions: [
           IconButton(
-            onPressed:() => startAddNewTransaction(context),
+            onPressed: () => startAddNewTransaction(context),
             icon: const Icon(
-              Icons.add, color: Colors.white,),)
+              Icons.add,
+              color: Colors.white,
+            ),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -60,16 +60,41 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 5,
               ),
             ),
-            TransactionList(_userTransaction),
+            _userTransaction.isEmpty
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 100,
+                        ),
+                        SizedBox(
+                          height: 150,
+                          child: Image.asset(
+                            'assets/images/bag.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'No transactions added yet !',
+                          style: TextStyle(
+                            fontSize: 20
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : TransactionList(_userTransaction),
           ],
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () => startAddNewTransaction(context),
         child: Icon(Icons.add),
       ),
     );
-
   }
 }
