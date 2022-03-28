@@ -67,11 +67,22 @@ class _NewTransactionState extends State<NewTransaction> {
                       }
                     },
                   ),
+                  Row(
+                    children: [
+                      Text('No Date Chosen'),
+                      TextButton(
+                          onPressed: (){
+
+                          },
+                          child: Text('Choose Date'),
+                          style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.primary),)
+                    ],
+                  )
                 ],
               ),
             ),
-            TextButton(
-                style: TextButton.styleFrom(primary: Colors.purple),
+            ElevatedButton(
+                //style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.primary),
                 onPressed: () {
                   if (_keyForm.currentState!.validate()) {
                     submitData();

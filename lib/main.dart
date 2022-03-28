@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget{
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple).copyWith(secondary: Colors.blueAccent),
         fontFamily: 'Nunito',
         textTheme: ThemeData.light().textTheme.copyWith(
-          headline6: const TextStyle(
+          headline6: TextStyle(
             fontFamily: 'Nunito',
             fontSize: 18,
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           )
         ),
         appBarTheme: const AppBarTheme(
