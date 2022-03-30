@@ -1,43 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 
 import '../model/transaction_model.dart';
+import 'transaction_item.dart';
 
 class TransactionList extends StatelessWidget {
 
   final List<Transaction> userTransaction;
-  TransactionList(this.userTransaction);
+  final Function deleteTx;
+  const TransactionList(this.userTransaction,this.deleteTx);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      child: ListView.builder(
-        itemBuilder: (_, index) {
-          return Card(
-            elevation: 3,
-            margin: EdgeInsets.symmetric(vertical: 8,horizontal: 5),
-            child: ListTile(
-              leading: CircleAvatar(
-                radius: 30,
-                child: Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: FittedBox(
-                    child: Text(
-                      '${userTransaction[index].amount} €'
-                    ),
+    return userTransaction.isEmpty ?
+      LayoutBuilder(
+        builder: (context, constraints) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: constraints.maxHeight * 0.6,
+                  child: Image.asset(
+                    'assets/images/bag.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
-              ),
-              title: Text(userTransaction[index].title,
-              style: Theme.of(context).textTheme.headline6,),
-              subtitle: Text(DateFormat.yMMMd().format(userTransaction[index].date)),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'No transactions added yet !',
+                  style: TextStyle(
+                      fontSize: 20
+                  ),
+                ),
+              ],
             ),
           );
         },
+      )
+      : ListView.builder(
+        itemBuilder: (_, index) {
+          return TransactionItem(userTransaction: userTransaction[index], deleteTx: deleteTx);
+        },
         itemCount: userTransaction.length,
-
-      ),
     );
   }
 }
+
+
