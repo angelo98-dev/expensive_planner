@@ -1,16 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:developer' as developer;
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-  NewTransaction(this.addTx);
+  NewTransaction(this.addTx){
+    developer.log("Constructor NewTransaction",name: "NewTransaction");
+  }
 
   @override
-  State<NewTransaction> createState() => _NewTransactionState();
+  State<NewTransaction> createState(){
+    developer.log("createState NewTransaction",name: "NewTransaction");
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
+  _NewTransactionState(){
+    developer.log("Constructor NewTransaction State",name: "NewTransaction");
+  }
+
+
+  @override
+  void initState() {
+    developer.log("initState()",name: "NewTransaction");
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    developer.log("didUpdateWidget()",name: "NewTransaction");
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    developer.log("dispose()",name: "NewTransaction");
+    super.dispose();
+  }
+
   final _keyForm = GlobalKey<FormState>();
 
   final _titleControler = TextEditingController();
@@ -53,6 +82,9 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
+
+    developer.log("build()",name: "NewTransaction");
+
     return SingleChildScrollView(
       child: Card(
         elevation: 5,
